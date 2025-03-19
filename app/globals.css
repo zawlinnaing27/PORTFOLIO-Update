@@ -59,4 +59,83 @@ body {
 .perspective {
   perspective: 1000px;
 }
+/* Custom styling for SweetAlert2 */
+.modern-swal-title {
+  font-family: 'Montserrat', sans-serif; /* Modern font */
+  font-size: 24px; /* Larger, more readable font */
+  font-weight: 600; /* Semi-bold title */
+  color: #333; /* Dark text for title */
+}
+
+.modern-swal-content {
+  font-family: 'Roboto', sans-serif; /* Smooth modern font */
+  font-size: 16px; /* Slightly larger font for content */
+  color: #555; /* Lighter grey for content */
+  line-height: 1.5; /* Line height for readability */
+}
+
+.modern-swal-button {
+  border-radius: 50px; /* Rounded corners for the button */
+  padding: 12px 24px;  /* Larger button size */
+  font-size: 16px;     /* Button font size */
+  font-weight: 600;    /* Bold button text */
+  text-transform: uppercase; /* Uppercase text for emphasis */
+  border: none;        /* Remove border */
+  transition: background-color 0.3s ease; /* Smooth background change */
+}
+
+.modern-swal-button:hover {
+  background-color: #2979FF; /* Light blue on hover */
+  cursor: pointer;           /* Pointer cursor on hover */
+}
+
+.modern-swal-button--confirm {
+  background-color: #42A5F5;  /* Light blue color for confirm button */
+  color: white;
+}
+
+.modern-swal-button--cancel {
+  background-color: #FF5252;  /* Light red color for cancel button */
+  color: white;
+}
+
+.swal2-popup {
+  border-radius: 20px; /* Rounded corners for the modal */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  padding: 30px; /* Larger padding inside modal */
+  background: #fff; /* White background for a clean look */
+  width: 420px; /* Set width to fit modern design */
+}
+
+/* SweetAlert2 animation */
+.animate__animated.animate__fadeInDown {
+  animation: fadeInDown 0.5s ease-in-out;
+}
+
+.animate__animated.animate__fadeOutUp {
+  animation: fadeOutUp 0.5s ease-in-out;
+}
+
+/* Animation keyframes for fade-in and fade-out effects */
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
 

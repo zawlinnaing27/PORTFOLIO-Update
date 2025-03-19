@@ -1,14 +1,14 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Github, Linkedin, Twitter, Instagram, Heart } from "lucide-react"
+import { Github, Linkedin, Facebook, Instagram, Heart } from "lucide-react"
 
 export default function Footer() {
   const socialLinks = [
-    { icon: <Github className="h-5 w-5" />, href: "#", label: "GitHub" },
-    { icon: <Twitter className="h-5 w-5" />, href: "#", label: "Twitter" },
-    { icon: <Linkedin className="h-5 w-5" />, href: "#", label: "LinkedIn" },
-    { icon: <Instagram className="h-5 w-5" />, href: "#", label: "Instagram" },
+    { icon: <Github className="h-5 w-5" />, href: "https://github.com/zawlinnaing27", label: "GitHub" },
+    { icon: <Facebook className="h-5 w-5" />, href: "#", label: "Facebook" },
+    { icon: <Linkedin className="h-5 w-5" />, href: "www.linkedin.com/in/zaw-lin-naing-396602300", label: "LinkedIn" },
+    // { icon: <Instagram className="h-5 w-5" />, href: "#", label: "Instagram" },
   ]
 
   return (

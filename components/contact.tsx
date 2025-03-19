@@ -5,6 +5,8 @@ import { motion, useInView } from "framer-motion"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail, MapPin, Phone, Send } from "lucide-react"
+import emailjs from "emailjs-com"; 
+import Swal from "sweetalert2"; 
 
 export default function Contact() {
   const ref = useRef(null)
@@ -22,10 +24,72 @@ export default function Contact() {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(formState)
-    // Form submission logic would go here
-  }
+    e.preventDefault();
+    // Use EmailJS to send an email
+    emailjs
+      .send(
+        "service_aq7rj9g",  // Your EmailJS service ID
+        "template_3xtr37b",  // Your email template ID
+        formState,           // The form data to send
+        "V88nlltxc0j14Qy1W"       // Your EmailJS user ID
+      )
+      .then(
+        (result) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Email Sent!',
+            text: 'Your message has been sent successfully.',
+            confirmButtonText: 'Okay',
+            confirmButtonColor: '#42A5F5', // Soft blue for the success button
+            background: '#fff',  // White background for a clean look
+            width: '400px',       // Width of the modal
+            padding: '25px',      // Padding inside the modal
+            customClass: {
+              title: 'modern-swal-title',    // Custom class for the title
+              content: 'modern-swal-content', // Custom class for the content
+              confirmButton: 'modern-swal-button', // Custom class for the button
+            },
+            backdrop: 'rgba(0,0,0,0.3)',   // Slightly dark backdrop
+            timer: 4000,            // Auto close after 4 seconds
+            timerProgressBar: true, // Show timer progress bar
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown' // Entry animation
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp' // Exit animation
+            },
+          });
+          // Reset form state
+          setFormState({ name: "", email: "",  subject: "", message: "" });
+        },
+        (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong, please try again later.',
+            confirmButtonText: 'Okay',
+            confirmButtonColor: '#FF5252', // Red color for error
+            background: '#fff',   // Clean white background
+            width: '400px',        // Modal width
+            padding: '25px',       // Padding inside the modal
+            customClass: {
+              title: 'modern-swal-title',    // Custom class for title
+              content: 'modern-swal-content', // Custom class for content
+              confirmButton: 'modern-swal-button', // Custom class for button
+            },
+            backdrop: 'rgba(0,0,0,0.3)',  // Slightly dark backdrop
+            timer: 4000,           // Auto close after 4 seconds
+            timerProgressBar: true, // Show timer progress bar
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'  // Entry animation
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'  // Exit animation
+            },
+          });
+        }
+      );
+  };
 
   const contactInfo = [
     {
@@ -133,6 +197,7 @@ export default function Contact() {
                       value={formState.name}
                       onChange={handleChange}
                       placeholder="Your name"
+                      required
                       className="bg-white/5 border-white/10 focus:border-purple-500 text-white placeholder:text-white/50"
                     />
                   </div>
@@ -145,6 +210,7 @@ export default function Contact() {
                       id="email"
                       name="email"
                       type="email"
+                      required
                       value={formState.email}
                       onChange={handleChange}
                       placeholder="Your email"
@@ -160,6 +226,7 @@ export default function Contact() {
                   <Input
                     id="subject"
                     name="subject"
+                    required
                     value={formState.subject}
                     onChange={handleChange}
                     placeholder="Subject"
@@ -174,6 +241,7 @@ export default function Contact() {
                   <Textarea
                     id="message"
                     name="message"
+                    required
                     value={formState.message}
                     onChange={handleChange}
                     placeholder="Your message"
